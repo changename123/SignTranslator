@@ -55,13 +55,12 @@ public class SignToEnglishActivity extends AppCompatActivity implements ICustomV
                 PredictionClient client = new PredictionClient(this, bitmapCapturedFromCamera);
                 client.customVisionReciver = this;
                 client.execute(endpointURL);
-
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.e("DEBUG onCreateError", e.toString());
             }
 
-            changeImageCaptureButtonText();
+
         }
     }
 
@@ -136,10 +135,10 @@ public class SignToEnglishActivity extends AppCompatActivity implements ICustomV
     }
 
     private void changeImageCaptureButtonText(){
-        if(translatedWord.equals("")){
-            captureImage_Button.setText("TAKE FIRST PHOTO");
-        }else{
+        if(translatedWord.length()>0){
             captureImage_Button.setText("TAKE NEXT PHOTO");
+        }else{
+            captureImage_Button.setText("TAKE FIRST PHOTO");
         }
     }
 
@@ -151,5 +150,6 @@ public class SignToEnglishActivity extends AppCompatActivity implements ICustomV
     @Override
     public void customVisionReciver(String string) {
         addResultToTranslatedWord(string);
+        changeImageCaptureButtonText();
     }
 }
