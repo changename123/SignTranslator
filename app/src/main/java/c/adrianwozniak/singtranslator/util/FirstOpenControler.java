@@ -1,4 +1,4 @@
-package c.adrianwozniak.singtranslator;
+package c.adrianwozniak.singtranslator.util;
 
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;

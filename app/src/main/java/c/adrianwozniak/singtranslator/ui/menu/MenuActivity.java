@@ -1,4 +1,4 @@
-package c.adrianwozniak.singtranslator;
+package c.adrianwozniak.singtranslator.ui.menu;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import c.adrianwozniak.singtranslator.util.FirstOpenControler;
+import c.adrianwozniak.singtranslator.util.HideSystemUI;
+import c.adrianwozniak.singtranslator.R;
+import c.adrianwozniak.singtranslator.ui.translators.EnglishToSignActivity;
+import c.adrianwozniak.singtranslator.ui.translators.SignToEnglishActivity;
+import c.adrianwozniak.singtranslator.ui.intro.TutorialActivity;
+
+public class MenuActivity extends AppCompatActivity {
 
     public static boolean TURN_OFF_FIRST_OPEN_BLOCKADE = false;
 
@@ -62,6 +69,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this.getApplicationContext(), SignToEnglishActivity.class));
     }
     private void startEnglishToSignActivity(){
-        startActivity(new Intent(this,EnglishToSignActivity.class));
+        startActivity(new Intent(this, EnglishToSignActivity.class));
     }
 }

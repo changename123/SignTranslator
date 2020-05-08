@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bacground"
-    tools:context=".SignToEnglishActivity">
+    tools:context=".ui.translators.SignToEnglishActivity">
 
     <Button
         android:id="@+id/signCaptureImageButton"
@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/singResoultTextView"
+        app:layout_constraintTop_toBottomOf="@+id/singResultTextView"
         app:layout_constraintVertical_bias="0.194" />
 
     <ImageView
@@ -44,7 +44,7 @@
         app:srcCompat="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/singResoultTextView"
+        android:id="@+id/singResultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -67,7 +67,7 @@
         android:layout_marginBottom="8dp"
         android:text="You must take photo for resoult"
         android:textColor="@color/colorTransparentWhite"
-        app:layout_constraintBottom_toTopOf="@+id/singResoultTextView"
+        app:layout_constraintBottom_toTopOf="@+id/singResultTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signImageView" />

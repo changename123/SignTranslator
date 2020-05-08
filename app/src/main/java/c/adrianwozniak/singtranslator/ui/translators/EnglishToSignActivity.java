@@ -1,4 +1,4 @@
-package c.adrianwozniak.singtranslator;
+package c.adrianwozniak.singtranslator.ui.translators;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,13 +10,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import c.adrianwozniak.singtranslator.R;
+import c.adrianwozniak.singtranslator.util.SignAlphabetImagesMap;
+
 public class EnglishToSignActivity extends AppCompatActivity {
 
     private String wordToTranslate = "";
     private EditText wordToTranslateEditText;
     private LinearLayout signImageScroll;
     private LayoutInflater inflater;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,6 @@ public class EnglishToSignActivity extends AppCompatActivity {
         wordToTranslateEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -44,7 +45,6 @@ public class EnglishToSignActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
     }

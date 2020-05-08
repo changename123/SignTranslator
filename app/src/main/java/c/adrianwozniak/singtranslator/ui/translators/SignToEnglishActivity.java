@@ -1,4 +1,4 @@
-package c.adrianwozniak.singtranslator;
+package c.adrianwozniak.singtranslator.ui.translators;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,14 +11,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import c.adrianwozniak.singtranslator.util.HideSystemUI;
+import c.adrianwozniak.singtranslator.network.ICustomVisionReciver;
+import c.adrianwozniak.singtranslator.network.PredictionClient;
+import c.adrianwozniak.singtranslator.R;
+
 
 public class SignToEnglishActivity extends AppCompatActivity implements ICustomVisionReciver {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
+    private static final String TAG = "SignToEnglishActivity";
+
     private Button captureImage_Button;
     private ImageView sign_ImageView;
-    private TextView signResoult_TextView;
+    private TextView signResult_TextView;
     private TextView signTitle_TextView;
 
     private String translatedWord = "";
@@ -29,7 +36,7 @@ public class SignToEnglishActivity extends AppCompatActivity implements ICustomV
         setContentView(R.layout.activity_sign_to_english);
 
         sign_ImageView = findViewById(R.id.signImageView);
-        signResoult_TextView = findViewById(R.id.singResoultTextView);
+        signResult_TextView = findViewById(R.id.singResultTextView);
         signTitle_TextView = findViewById(R.id.signTitleTextView);
         captureImage_Button = findViewById(R.id.signCaptureImageButton);
 
@@ -40,24 +47,21 @@ public class SignToEnglishActivity extends AppCompatActivity implements ICustomV
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG, "onActivityResult:");
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 
             Bitmap bitmapCapturedFromCamera = getImageBitmapFromCamera(data.getExtras());
-
             setSignImage(bitmapCapturedFromCamera);
-            setTitleText("Resoult is:");
-
+            setTitleText("Result is:");
 
             try {
                 String endpointURL = getResources().getString(R.string.PredictionEndpoint);
-                Log.i("ENDPOINT ", "ODPALONEE");
-
                 PredictionClient client = new PredictionClient(this, bitmapCapturedFromCamera);
                 client.customVisionReciver = this;
                 client.execute(endpointURL);
             } catch (Exception e) {
+                Log.e(TAG, "onActivityResult: " + e.getMessage(), e);
                 e.printStackTrace();
-                Log.e("DEBUG onCreateError", e.toString());
             }
 
 
@@ -76,12 +80,12 @@ public class SignToEnglishActivity extends AppCompatActivity implements ICustomV
 
     public void captureImageButton_OnClick(View view) {
         startCamera();
-        Log.i("DEBUG", "START CAMERA ON CLICK");
-
     }
+
     public void newWordButton_OnClick(View view) {
         cleanTranslatedWord();
     }
+
     public void removeLastCharButton_OnClick(View view) {
         try {
             if (translatedWord.length() >= 1) {
@@ -111,8 +115,8 @@ public class SignToEnglishActivity extends AppCompatActivity implements ICustomV
         signTitle_TextView.setText(text);
     }
 
-    private void setSignResoultText(String text){
-        signResoult_TextView.setText(text);
+    private void setSignResultText(String text){
+        signResult_TextView.setText(text);
     }
 
     private void setSignImage(Bitmap imageBitmap){
@@ -126,12 +130,12 @@ public class SignToEnglishActivity extends AppCompatActivity implements ICustomV
     private void cleanTranslatedWord(){
         translatedWord="";
         setTitleText("You must take photo for resoult");
-        setSignResoultText(translatedWord);
+        setSignResultText(translatedWord);
     }
 
     private void addResultToTranslatedWord(String s){
         translatedWord+=s;
-        setSignResoultText(translatedWord);
+        setSignResultText(translatedWord);
     }
 
     private void changeImageCaptureButtonText(){
@@ -144,7 +148,7 @@ public class SignToEnglishActivity extends AppCompatActivity implements ICustomV
 
     private void removeLastCharFromTranslatedWord(String translatedWord) {
             this.translatedWord = translatedWord.substring(0, translatedWord.length() - 1);
-            setSignResoultText(this.translatedWord);
+            setSignResultText(this.translatedWord);
     }
 
     @Override

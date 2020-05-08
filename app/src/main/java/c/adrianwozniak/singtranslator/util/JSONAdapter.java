@@ -1,4 +1,4 @@
-package c.adrianwozniak.singtranslator;
+package c.adrianwozniak.singtranslator.util;
 
 import org.json.JSONArray;
 import org.json.JSONException;

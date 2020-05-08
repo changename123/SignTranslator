@@ -21,15 +21,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EnglishToSignActivity"></activity>
+        <activity android:name=".ui.translators.EnglishToSignActivity"></activity>
         <activity
-            android:name=".SignToEnglishActivity"
+            android:name=".ui.translators.SignToEnglishActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TutorialActivity"
+            android:name=".ui.intro.TutorialActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.menu.MenuActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

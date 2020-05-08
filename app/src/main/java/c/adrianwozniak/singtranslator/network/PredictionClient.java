@@ -1,12 +1,16 @@
-package c.adrianwozniak.singtranslator;
+package c.adrianwozniak.singtranslator.network;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 
+import c.adrianwozniak.singtranslator.util.ImageFileAdapter;
+import c.adrianwozniak.singtranslator.util.JSONAdapter;
+import c.adrianwozniak.singtranslator.R;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -15,6 +19,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class PredictionClient extends AsyncTask<String, Void, String> {
+
+    private static final String TAG = "PredictionClient";
 
     public ICustomVisionReciver customVisionReciver = null;
     private Context context;
@@ -29,21 +35,17 @@ public class PredictionClient extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
         try{
-            Log.i("ENDPOINT", "HIT");
-
             return hitPredictionEndpoint(strings[0]);
         }catch (Exception e){
-            Log.i("ENDPOINT doinb fail", e.toString());
+            Log.e(TAG, "doInBackground: " + e.getMessage(), e );
         }
         return null;
     }
 
     @Override
     protected void onPostExecute(String result) {
-
         if(result != null){
             customVisionReciver.customVisionReciver(result);
-            Log.i("ENDPOINT interface", result);
         }
     }
 
@@ -69,20 +71,14 @@ public class PredictionClient extends AsyncTask<String, Void, String> {
         Response response = client.newCall(request).execute();
 
         String predictionResultJSON = response.body().string();
-        Log.i("ENDPOINT request JSON: ", predictionResultJSON);
         String predictionResult = JSONAdapter.getDataFrom(predictionResultJSON, "tagName");
-        Log.i("ENDPOINT request is ok", predictionResult);
+
+        Log.d(TAG, "hitPredictionEndpoint: " + predictionResultJSON);
 
         if (!response.isSuccessful()) {
-            throw new IOException("ENDPOINT response fail " + response);
+            throw new IOException(TAG +" response failure " + response);
         }
 
         return predictionResult;
-
-
-
     }
-
-
-
 }

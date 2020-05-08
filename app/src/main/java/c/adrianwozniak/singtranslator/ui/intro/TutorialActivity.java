@@ -1,4 +1,4 @@
-package c.adrianwozniak.singtranslator;
+package c.adrianwozniak.singtranslator.ui.intro;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import c.adrianwozniak.singtranslator.util.HideSystemUI;
+import c.adrianwozniak.singtranslator.R;
+import c.adrianwozniak.singtranslator.ui.intro.util.TutorialAdapter;
 
 
 public class TutorialActivity extends AppCompatActivity {

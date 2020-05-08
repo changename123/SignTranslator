@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bacground"
-    tools:context=".EnglishToSignActivity">
+    tools:context=".ui.translators.EnglishToSignActivity">
 
     <EditText
         android:id="@+id/wordToTranslateEditText"

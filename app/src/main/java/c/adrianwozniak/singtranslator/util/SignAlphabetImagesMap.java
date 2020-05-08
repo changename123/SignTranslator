@@ -1,6 +1,8 @@
-package c.adrianwozniak.singtranslator;
+package c.adrianwozniak.singtranslator.util;
 
 import java.util.HashMap;
+
+import c.adrianwozniak.singtranslator.R;
 
 public class SignAlphabetImagesMap {
     private static HashMap<String, Integer> MAP;

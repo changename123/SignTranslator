@@ -1,4 +1,4 @@
-package c.adrianwozniak.singtranslator;
+package c.adrianwozniak.singtranslator.util;
 
 import android.graphics.Bitmap;
 import android.os.Environment;
@@ -11,6 +11,8 @@ import java.io.IOException;
 
 public class ImageFileAdapter {
     private static String pathWithFileName = "";
+
+    private static final String TAG = "ImageFileAdapter";
 
     public static String getFilePath(){
         return pathWithFileName;
@@ -35,11 +37,10 @@ public class ImageFileAdapter {
             fos.flush();
             fos.close();
 
-            Log.i("ENDPOINT create file", "FILE OK");
             return imageFile;
         }
         catch (IOException e){
-            Log.i("ENDPOINT error file", e.toString());
+            Log.e(TAG, "returnFileFrom: "+ e.getMessage(), e);
         }
         return null;
     }
