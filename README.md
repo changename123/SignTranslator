@@ -15,8 +15,7 @@
 
 
 ## General info
-The main purpose of creating this application was lern new techologies and create final project for postgraduate studies in WSB Universiti in Gdańsk on Mobile Application Develper.This app is two way translator. Sing to english translation was based on AI shared by Microsot on Azure platform. User simply just take photo of any sing and app will translate it. 
-
+How this work? Its quite simple. English to sign translation is based on graphic sings. App is recognizing and match each letter to graphic sing, then present it to user. Sign language to english is more difficult. At first user should take photo of his hand(sign), application save it into file then throught REST API send it into Azure platform where is all magic done. Azure platform shares Custom Vision AI with can be trained to classyfy images in this case our photos. We can create there tags for each sign and train it to classyfy our photos to each signs (tag). As return we orbtain JSON with percentage classyfy to what tag (sign) our photo is match most. At the end we can decide what should we do with our result its mean, we can show to user result or tell thats we dont recognize sign. 
 
 
 ## Screenshots
