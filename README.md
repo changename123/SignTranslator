@@ -1,5 +1,5 @@
-# SingTranslator
->Sing translator is a mobile application develop on Android System. It its a translator for sing language. Was created for help to communicate with deaf people. This tool can translate from sing to english and english to sing language. In this readme i demonstrate how to implemnt and use by yourself.
+# SignTranslator
+>Sign translator is a mobile application develop on Android System. It its a translator for sign language. Was created for help to communicate with deaf people. This tool can translate from sing to english and english to sing language. In this readme i demonstrate how to implemnt and use by yourself.
 
 
 
