@@ -1,5 +1,5 @@
 # SignTranslator
->Sign translator is a mobile application develop on Android System. It its a translator for sign language. Was created for help to communicate with deaf people. This tool can translate from sing to english and english to sing language. In this readme i demonstrate how to implemnt and use by yourself.
+>Sign translator is a mobile application develop on Android System. It its a translator for sign language. Was created for help to communicate with deaf people. This tool can translate from sign to english and english to sign language. In this readme i demonstrate how to implemnt and use by yourself.
 
 
 
